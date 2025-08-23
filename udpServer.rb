@@ -1,7 +1,5 @@
 require 'socket'
 
-isWriting = false
-
 if ARGV.empty?
   puts "Input port to listen to"
   port_str = gets.chomp
@@ -10,6 +8,7 @@ else
     
   if flag == "-p" 
     port_str = ARGV[1]
+  end
 end
 
 
@@ -23,10 +22,6 @@ server_socket = UDPSocket.new
 server_socket.bind(bind_address, listen_port)
 
 puts "UDP server listening on #{bind_address}:#{listen_port}"
-
-if isWriting == true
-  file.puts "UDP server listening on #{bind_address}:#{listen_port}"
-end
 
 loop do
   
