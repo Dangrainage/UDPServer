@@ -38,8 +38,7 @@ loop do
 
   if message_str.include?("stop!server")
     abort("Got server stop signal, quitting!")
-   end
   else 
     puts "Received from #{client_info[2]}: #{message_str}"
   end
-
+end
