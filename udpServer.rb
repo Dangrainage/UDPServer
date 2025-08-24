@@ -3,8 +3,8 @@ require 'socket'
 isWriting = false
 
 if ARGV.empty?
-  puts "Input port to listen to"
-  port_str = gets.chomp
+  puts "No port to listen to was defined, exiting"
+  exit(0)
 else
   flag1 = ARGV[0]
   flag2 = ARGV[2]
