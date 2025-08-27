@@ -10,7 +10,7 @@ Using -p you will define the port within the command, not using It the program w
 
 Using -o will log everything to the file name you define, not using It everything goes to stdout.
 
-```-n true```
+```-n true``` (optional)
 
 Using ``-n`` will remove logging details (messages like "UDP Server listening on..") from getting logged to the output file.
 
