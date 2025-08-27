@@ -7,7 +7,7 @@ file_to_output = nil
 port_str = nil
 
 def true?(obj)
-  obj.to_s.downcase == "true" or obj.to_s.downcase == "t" # stolen directly from stack overflow 
+  obj.to_s.downcase == "true" || obj.to_s.downcase == "t" # stolen directly from stack overflow 
 end
 
 
@@ -31,7 +31,11 @@ end
 
 if true?(check)
   logDetails = false
-  isWriting = true
+end
+
+if logDetails == false and isWriting == false
+  puts "Cannot pass '-n' flag without an output file"
+  exit(1)
 end
 
 if isWriting == true
