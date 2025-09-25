@@ -25,6 +25,12 @@ else
       isWriting = true
     when "-n"
       check = value
+    when "h", "-h", "help", "-help"
+      puts "         -p <port number> to define a port to listen to. (mandatory)"
+      puts "         -o <output file name> to define a file to log all the output to. (optional)"
+      puts "         -n true/t toggles logging details to the output file (optional only when -o is used)"
+      puts "         -h/help/h will print this message"
+      exit(0)
     end
   end
 end
@@ -67,7 +73,7 @@ end
 
 loop do
   
-  message, client_info = server_socket.recvfrom(100000)
+  message, client_info = server_socket.recvfrom(65507)
 
   message_str = message.to_s
 
@@ -89,14 +95,7 @@ loop do
     if isWriting and logDetails == true
       file.puts("Received from #{client_info[2]}: #{message_str}")
     elsif isWriting == true and logDetails == false
-      file.puts("#{message}")
-      filename = "#{file_to_output}"
-      text_to_remove = "Received from #{client_info[2]}: #{message_str}"
-      lines = File.readlines(filename)
-      modified_lines = lines.reject { |line| line.include?(text_to_remove) }
-      File.open("#{file_to_output}", 'w') do |file|
-        modified_lines.each { |line| file.puts line }
-      end
+        file.puts(message_str)
     end
   end
 end
